@@ -1,0 +1,31 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+    id 'maven'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    implementation LibDep.kotlinStdlib
+    implementation gradleApi()
+}
+
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('../repo-local'))
+            pom.groupId = "com.he.ztto"
+            pom.artifactId = "simple-perf"
+            pom.version = "1.0.0-SNAPSHOT"
+        }
+    }
+}
