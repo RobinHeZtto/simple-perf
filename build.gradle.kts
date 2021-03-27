@@ -7,7 +7,7 @@ buildscript {
     dependencies {
         classpath(BuildInfo.buildGradle)
         classpath(kotlin("gradle-plugin", kotlinVersion))
-        classpath("com.he.ztto:simple-perf:1.0.0-SNAPSHOT")
+        classpath(SimplePerf.simplePerfPlugin)
     }
 }
 

@@ -14,6 +14,13 @@ object BuildInfo {
    const val buildToolsVersion = "30.0.2"
 }
 
+object SimplePerf {
+   const val groupId = "com.he.ztto"
+   const val artifactId = "simple-perf"
+   const val version = "1.0.0-SNAPSHOT"
+
+   const val simplePerfPlugin = "$groupId:$artifactId:$version"
+}
 
 object LibDep {
    const val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"

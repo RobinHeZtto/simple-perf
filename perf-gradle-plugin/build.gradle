@@ -16,8 +16,8 @@ compileKotlin {
 dependencies {
     implementation LibDep.kotlinStdlib
     implementation gradleApi()
+    implementation BuildInfo.buildGradle
 }
-
 
 uploadArchives {
     repositories {
