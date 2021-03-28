@@ -27,6 +27,12 @@ class PerfTransform : Transform() {
     }
 
     override fun transform(transformInvocation: TransformInvocation?) {
+
+        PerfTransformInvocation(transformInvocation!!).apply {
+
+        }
+
+
         transformInvocation?.let { transformInvocation ->
             val outputProvider = transformInvocation.outputProvider
 
@@ -38,6 +44,8 @@ class PerfTransform : Transform() {
                             jar.scopes,
                             Format.JAR
                     )
+
+
                     FileUtils.copyFile(jar.file, dest)
                 }
 
