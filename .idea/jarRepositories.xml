@@ -51,5 +51,15 @@
       <option name="name" value="maven" />
       <option name="url" value="file:$PROJECT_DIR$/perf-gradle-plugin/repo-local" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="file:$PROJECT_DIR$/perf-annotations/repo-local" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="file:$PROJECT_DIR$/perf-compiler/repo-local" />
+    </remote-repository>
   </component>
 </project>

@@ -1,7 +1,8 @@
 plugins {
     id("com.android.application")
-    id ("kotlin-android")
-    id ("simple-perf")
+    id("kotlin-android")
+    id("simple-perf")
+    kotlin("kapt")
 }
 
 android {
@@ -47,6 +48,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":perf-annotations"))
+    kapt(project(":perf-compiler"))
     implementation(LibDep.kotlinStdlib)
     implementation(AndroidxDep.coreKtx)
     implementation(AndroidxDep.appcompat)

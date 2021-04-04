@@ -24,6 +24,7 @@ object SimplePerf {
 
 object LibDep {
    const val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
+   const val autoService = "com.google.auto.service:auto-service:1.0-rc7"
 }
 
 object AndroidxDep {

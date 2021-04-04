@@ -1,3 +1,5 @@
+include ':perf-compiler'
+include ':perf-annotations'
 include ':perf-gradle-plugin'
 include ':app'
 rootProject.name = "simple-perf"
