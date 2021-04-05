@@ -6,6 +6,9 @@ import com.android.build.api.transform.Transform
 import com.android.build.api.transform.TransformInvocation
 import com.android.build.gradle.internal.pipeline.TransformManager
 import com.android.utils.FileUtils
+import com.he.ztto.perf.gradle.Scanner
+import com.he.ztto.perf.gradle.logger
+import org.gradle.api.logging.LogLevel
 
 class PerfTransform : Transform() {
 
@@ -26,38 +29,47 @@ class PerfTransform : Transform() {
         return false
     }
 
-    override fun transform(transformInvocation: TransformInvocation?) {
 
-        PerfTransformInvocation(transformInvocation!!).apply {
+    override fun transform(transformInvocation: TransformInvocation) {
+        val outputProvider = transformInvocation.outputProvider
 
-        }
-
-
-        transformInvocation?.let { transformInvocation ->
-            val outputProvider = transformInvocation.outputProvider
-
-            transformInvocation.inputs.forEach {
-                it.jarInputs.forEach { jar ->
-                    val dest = outputProvider.getContentLocation(
-                            jar.name,
-                            jar.contentTypes,
-                            jar.scopes,
-                            Format.JAR
-                    )
+        transformInvocation.inputs.forEach {
+            it.jarInputs.forEach { jar ->
+                val dest = outputProvider.getContentLocation(
+                        jar.name,
+                        jar.contentTypes,
+                        jar.scopes,
+                        Format.JAR
+                )
 
 
-                    FileUtils.copyFile(jar.file, dest)
+                logger.log(LogLevel.ERROR, "jar >>>  ${jar.name}")
+
+//                if (Scanner.shouldScan(jar.name)) {
+                    Scanner.scanFile(jar.file)
+//                }
+
+                FileUtils.copyFile(jar.file, dest)
+            }
+
+            it.directoryInputs.forEach { dir ->
+                val dest = outputProvider.getContentLocation(
+                        dir.name,
+                        dir.contentTypes,
+                        dir.scopes,
+                        Format.DIRECTORY
+                )
+
+                logger.log(LogLevel.ERROR, "dir >>>  ${dir.name}")
+
+                val fileTree = dir.file.walk()
+                fileTree.filter { it ->
+                    it.isFile
+                }.forEach { it ->
+                    Scanner.scanClass(it)
                 }
 
-                it.directoryInputs.forEach { dir ->
-                    val dest = outputProvider.getContentLocation(
-                            dir.name,
-                            dir.contentTypes,
-                            dir.scopes,
-                            Format.DIRECTORY
-                    )
-                    FileUtils.copyDirectory(dir.file, dest)
-                }
+                FileUtils.copyDirectory(dir.file, dest)
             }
         }
     }

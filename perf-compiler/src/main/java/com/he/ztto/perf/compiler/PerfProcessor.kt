@@ -35,10 +35,7 @@ class PerfProcessor : AbstractProcessor(){
             }
 
             Logger.info("process ===> ${elements.size}")
-
         }
-
-
         return false
     }
 

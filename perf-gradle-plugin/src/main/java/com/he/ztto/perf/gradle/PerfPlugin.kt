@@ -9,7 +9,7 @@ import org.gradle.api.logging.LogLevel
 class PerfPlugin : Plugin<Project> {
 
     override fun apply(target: Project) {
-        target.logger.log(LogLevel.ERROR, "==========>")
+        target.logger.log(LogLevel.ERROR, "perf plugin apply")
 
         target.getAndroid<AppExtension>().apply {
             registerTransform(PerfTransform())
