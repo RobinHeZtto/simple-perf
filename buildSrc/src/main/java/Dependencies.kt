@@ -17,7 +17,7 @@ object BuildInfo {
 object SimplePerf {
    const val groupId = "com.he.ztto"
    const val artifactId = "simple-perf"
-   const val version = "1.0.0-SNAPSHOT"
+   const val version = "1.0.0"
 
    const val simplePerfPlugin = "$groupId:$artifactId:$version"
 }

@@ -25,7 +25,7 @@ uploadArchives {
             repository(url: uri('../repo-local'))
             pom.groupId = "com.he.ztto"
             pom.artifactId = "simple-perf"
-            pom.version = "1.0.0-SNAPSHOT"
+            pom.version = "1.0.0"
         }
     }
 }
