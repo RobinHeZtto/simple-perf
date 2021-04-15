@@ -45,9 +45,9 @@ class PerfTransform : Transform() {
 
                 logger.log(LogLevel.ERROR, "jar >>>  ${jar.name}")
 
-//                if (Scanner.shouldScan(jar.name)) {
-                    Scanner.scanFile(jar.file)
-//                }
+
+                Scanner.scanFile(jar.file)
+
 
                 FileUtils.copyFile(jar.file, dest)
             }
